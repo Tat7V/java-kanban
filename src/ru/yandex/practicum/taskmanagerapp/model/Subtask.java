@@ -1,3 +1,5 @@
+package ru.yandex.practicum.taskmanagerapp.model;
+
 public class Subtask extends Task {
     private final int epicId;
 

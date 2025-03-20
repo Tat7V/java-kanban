@@ -1,3 +1,11 @@
+package ru.yandex.practicum.taskmanagerapp;
+
+import ru.yandex.practicum.taskmanagerapp.model.Epic;
+import ru.yandex.practicum.taskmanagerapp.model.Status;
+import ru.yandex.practicum.taskmanagerapp.model.Subtask;
+import ru.yandex.practicum.taskmanagerapp.model.Task;
+import ru.yandex.practicum.taskmanagerapp.service.TaskManager;
+
 public class Main {
 
     public static void main(String[] args) {
