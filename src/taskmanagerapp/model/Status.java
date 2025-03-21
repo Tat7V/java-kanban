@@ -1,4 +1,4 @@
-package Taskmanagerapp.model;
+package taskmanagerapp.model;
 
 public enum Status {
     NEW,

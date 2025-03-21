@@ -1,9 +1,9 @@
-package Taskmanagerapp.service;
+package taskmanagerapp.service;
 
-import Taskmanagerapp.model.Status;
-import Taskmanagerapp.model.Subtask;
-import Taskmanagerapp.model.Task;
-import Taskmanagerapp.model.Epic;
+import taskmanagerapp.model.Status;
+import taskmanagerapp.model.Subtask;
+import taskmanagerapp.model.Task;
+import taskmanagerapp.model.Epic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
