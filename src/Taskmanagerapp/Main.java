@@ -1,10 +1,10 @@
-package ru.yandex.practicum.taskmanagerapp;
+package Taskmanagerapp;
 
-import ru.yandex.practicum.taskmanagerapp.model.Epic;
-import ru.yandex.practicum.taskmanagerapp.model.Status;
-import ru.yandex.practicum.taskmanagerapp.model.Subtask;
-import ru.yandex.practicum.taskmanagerapp.model.Task;
-import ru.yandex.practicum.taskmanagerapp.service.TaskManager;
+import Taskmanagerapp.model.Epic;
+import Taskmanagerapp.model.Status;
+import Taskmanagerapp.model.Subtask;
+import Taskmanagerapp.model.Task;
+import Taskmanagerapp.service.TaskManager;
 
 public class Main {
 

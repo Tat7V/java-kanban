@@ -1,9 +1,9 @@
-package ru.yandex.practicum.taskmanagerapp.service;
+package Taskmanagerapp.service;
 
-import ru.yandex.practicum.taskmanagerapp.model.Epic;
-import ru.yandex.practicum.taskmanagerapp.model.Status;
-import ru.yandex.practicum.taskmanagerapp.model.Subtask;
-import ru.yandex.practicum.taskmanagerapp.model.Task;
+import Taskmanagerapp.model.Status;
+import Taskmanagerapp.model.Subtask;
+import Taskmanagerapp.model.Task;
+import Taskmanagerapp.model.Epic;
 
 import java.util.ArrayList;
 import java.util.HashMap;

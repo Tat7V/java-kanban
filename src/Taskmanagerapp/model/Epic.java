@@ -1,4 +1,4 @@
-package ru.yandex.practicum.taskmanagerapp.model;
+package Taskmanagerapp.model;
 
 import java.util.ArrayList;
 
