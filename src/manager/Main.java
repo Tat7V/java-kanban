@@ -1,10 +1,10 @@
-package taskmanagerapp;
+package manager;
 
-import taskmanagerapp.model.Epic;
-import taskmanagerapp.model.Status;
-import taskmanagerapp.model.Subtask;
-import taskmanagerapp.model.Task;
-import taskmanagerapp.service.TaskManager;
+import manager.model.Epic;
+import manager.model.Status;
+import manager.model.Subtask;
+import manager.model.Task;
+import manager.service.TaskManager;
 
 public class Main {
 
