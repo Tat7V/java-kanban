@@ -14,8 +14,11 @@ public class InMemoryTaskManager implements TaskManager {
     private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
     private final HashMap<Integer, Epic> epics = new HashMap<>();
     private int idNext = 1;
-    private final List<Task> history = new ArrayList<>();
-    private static final int MAX_HISTORY_SIZE = 10;
+    private final HistoryManager historyManager;
+
+    public InMemoryTaskManager() {
+        this.historyManager = Managers.getDefaultHistory();
+    }
 
     //d. Создание.
     @Override
@@ -79,21 +82,21 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Task getTaskById(int id) {
         Task task = tasks.get(id);
-        addToHistory(task);
+        historyManager.add(task);
         return task;
     }
 
     @Override
     public Epic getEpicById(int id) {
         Epic epic = epics.get(id);
-        addToHistory(epic);
+        historyManager.add(epic);
         return epic;
     }
 
     @Override
     public Subtask getSubtaskById(int id) {
         Subtask subtask = subtasks.get(id);
-        addToHistory(subtask);
+        historyManager.add(subtask);
         return subtask;
     }
 
@@ -170,17 +173,9 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Task> getHistory(){
-        return new ArrayList<>(history);
-    }
-    private void addToHistory(Task task) {
-        if (task == null) {
-            return;
+            return historyManager.getHistory();
         }
-        history.add(task);
-        if (history.size() > MAX_HISTORY_SIZE) {
-            history.remove(0);
-        }
-    }
+
 
     //Статус эпика
        private void updateEpicStatus(int epicId) {
