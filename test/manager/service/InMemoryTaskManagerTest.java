@@ -21,7 +21,7 @@ class InMemoryTaskManagerTest {
         manager = Managers.getDefault();
     }
     @Test
-    void shouldAddAndFindDifferentTaskTypes() {
+    void shouldAddAndFindTasksTypes() {
         Task task = new Task(1,"Задача", "Описание задачи", Status.NEW);
         manager.createTask(task);
 
@@ -50,7 +50,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void taskFieldShouldBeUnchangedWhenAddedToManager() {
+    void shouldPreserveFieldsOfAddedTask() {
         String expectedName = "Название задачи";
         String expectedDescription = "Описание задачи";
         Status expectedStatus = Status.NEW;

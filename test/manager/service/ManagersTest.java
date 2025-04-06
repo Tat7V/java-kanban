@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ManagersTest {
     @Test
-    void shouldHandlePredefinedAndGeneratedIds() {
+    void shouldNotConflictWithGivenId() {
         TaskManager manager = Managers.getDefault();
 
         Task taskWithPredefinedId = new Task(1, "Задача с установленным id", "Описание", Status.NEW);
