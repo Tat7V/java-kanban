@@ -70,7 +70,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void shouldRemoveTaskFromHistoryWhenDeleted() {
+    void shouldRemoveDeletedTaskFromHistory() {
         Task task = new Task(1, "Название задачи", "Описание задачи", Status.NEW);
         manager.createTask(task);
         manager.getTaskById(task.getId());
@@ -80,7 +80,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void shouldRemoveEpicAndSubtasksFromHistory() {
+    void shouldRemoveSubtasksWithEpic() {
         Epic epic = new Epic(1, "Название эпика", "Описание эпика", Status.NEW);
         manager.createEpic(epic);
         Subtask subtask = new Subtask(2, "Название подзадачи", "Описание подзадачи", Status.NEW, 1);
