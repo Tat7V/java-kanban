@@ -28,7 +28,7 @@ class ManagersTest {
 
         for (Task task : allTasks) {
             if (task.getId() == 1) {
-                foundtaskWithPredefinedId= true;
+                foundtaskWithPredefinedId = true;
             }
             if (task.getId() == 2) {
                 foundnextTask = true;

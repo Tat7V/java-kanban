@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InMemoryHistoryManagerTest {
     private HistoryManager historyManager;
@@ -65,8 +65,6 @@ class InMemoryHistoryManagerTest {
         assertEquals(task.getDescription(), saved.getDescription());
         assertEquals(task.getStatus(), saved.getStatus());
     }
-
-
 
 
 }

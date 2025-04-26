@@ -2,7 +2,7 @@ package manager.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TaskTest {
     @Test
@@ -12,8 +12,6 @@ class TaskTest {
 
         assertEquals(task1, task2, "Задачи с одинаковым id равны по условию");
     }
-
-
 
 
 }

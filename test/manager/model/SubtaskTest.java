@@ -2,12 +2,13 @@ package manager.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class SubtaskTest {
     @Test
     void subtaskShouldNotBeItsOwnEpic() {
-       Subtask subtask = new Subtask(1, "Subtask", "Description", Status.NEW, 2);
+        Subtask subtask = new Subtask(1, "Subtask", "Description", Status.NEW, 2);
         assertNotEquals(subtask.getId(), subtask.getEpicId(), "Подзадачу нельзя сделать своим же эпиком");
     }
 

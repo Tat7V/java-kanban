@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -21,15 +20,16 @@ class InMemoryTaskManagerTest {
     void setUp() {
         manager = Managers.getDefault();
     }
+
     @Test
     void shouldAddAndFindTasksTypes() {
-        Task task = new Task(1,"Задача", "Описание задачи", Status.NEW);
+        Task task = new Task(1, "Задача", "Описание задачи", Status.NEW);
         manager.createTask(task);
 
-        Epic epic = new Epic(2,"Эпик", "Описание эпика", Status.NEW);
+        Epic epic = new Epic(2, "Эпик", "Описание эпика", Status.NEW);
         manager.createEpic(epic);
 
-        Subtask subtask = new Subtask(3,"Подзадача", "Описание подзадачи", Status.NEW, epic.getId());
+        Subtask subtask = new Subtask(3, "Подзадача", "Описание подзадачи", Status.NEW, epic.getId());
         manager.createSubtask(subtask);
 
         ArrayList<Task> tasks = manager.getAllTasks();
@@ -68,6 +68,7 @@ class InMemoryTaskManagerTest {
         assertEquals(expectedDescription, savedTask.getDescription(), "Описание задачи должно совпадать с описанием при создании");
         assertEquals(expectedStatus, savedTask.getStatus(), "Статус задачи должен совпадать со статусом при создании");
     }
+
     @Test
     void shouldRemoveTaskFromHistoryWhenDeleted() {
         Task task = new Task(1, "Название задачи", "Описание задачи", Status.NEW);
