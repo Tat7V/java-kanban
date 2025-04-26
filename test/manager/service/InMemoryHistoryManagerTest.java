@@ -5,16 +5,54 @@ import manager.model.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryHistoryManagerTest {
     private HistoryManager historyManager;
     private Task task;
+    private Task task2;
 
     @BeforeEach
     void setUp() {
         historyManager = Managers.getDefaultHistory();
         task = new Task(1, "Задача", "Описание", Status.NEW);
+        task2 = new Task(2, "Задача 2", "Описание задачи 2", Status.NEW);
+    }
+
+    @Test
+    void shouldAddTasksToHistory() {
+        historyManager.add(task);
+        historyManager.add(task2);
+
+        List<Task> history = historyManager.getHistory();
+        assertEquals(2, history.size());
+        assertEquals(task, history.get(0));
+        assertEquals(task2, history.get(1));
+    }
+
+    @Test
+    void shouldRemoveDuplicatesFromHistory() {
+        historyManager.add(task);
+        historyManager.add(task2);
+        historyManager.add(task);
+
+        List<Task> history = historyManager.getHistory();
+        assertEquals(2, history.size());
+        assertEquals(task2, history.get(0));
+        assertEquals(task, history.get(1));
+    }
+
+    @Test
+    void shouldRemoveTaskFromHistory() {
+        historyManager.add(task);
+        historyManager.add(task2);
+        historyManager.remove(task.getId());
+
+        List<Task> history = historyManager.getHistory();
+        assertEquals(1, history.size());
+        assertEquals(task2, history.get(0));
     }
 
     @Test
@@ -28,13 +66,7 @@ class InMemoryHistoryManagerTest {
         assertEquals(task.getStatus(), saved.getStatus());
     }
 
-    @Test
-    void shouldNotExceedMaxHistorySize() {
-        for (int i = 1; i <= 12; i++) {
-            historyManager.add(new Task(i, "Задача " + i, "Описание", Status.NEW));
-        }
-        assertEquals(10, historyManager.getHistory().size(), "В истории может храниться не больше 10 задач");
-    }
+
 
 
 }

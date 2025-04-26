@@ -8,63 +8,60 @@ import manager.service.Managers;
 import manager.service.TaskManager;
 
 public class Main {
-    //сценарий для проверки
     public static void main(String[] args) {
-        TaskManager manager = Managers.getDefault();
+        TaskManager manager = getTaskManager();
 
-        Task task = new Task(0,"Покупки", "Купить продукты", Status.NEW);
-        manager.createTask(task);
+        manager.getTaskById(1);
+        printHistory(manager);
+        manager.getEpicById(3);
+        printHistory(manager);
+        manager.getSubtaskById(4);
+        printHistory(manager);
+        manager.getTaskById(2);
+        printHistory(manager);
+        manager.getTaskById(2);
+        printHistory(manager);
+        manager.getSubtaskById(5);
+        printHistory(manager);
+        manager.getTaskById(1);
+        printHistory(manager);
 
-        Epic epic = new Epic(0,"Ремонт", "Сделать ремнот в квартире", Status.NEW);
-        manager.createEpic(epic);
+        manager.deleteTaskById(1);
+        printHistory(manager);
 
-        Subtask subtask = new Subtask(0,"Поклеить обои", "Зал и спальня", Status.NEW, epic.getId());
-        manager.createSubtask(subtask);
-
-        manager.getTaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getTaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getSubtaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getSubtaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getTaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getTaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getSubtaskById(task.getId());
-        manager.getEpicById(epic.getId());
-        manager.getSubtaskById(task.getId());
-        manager.getEpicById(epic.getId());
-
-        printAllTasks(manager);
-
+        manager.deleteEpicById(3);
+        printHistory(manager);
     }
 
-    public static void printAllTasks(TaskManager manager) {
-        System.out.println("Задачи:");
-        for (Task task : manager.getAllTasks()) {
-            System.out.println(task);
-        }
+    private static TaskManager getTaskManager() {
+        TaskManager manager = Managers.getDefault();
 
-        System.out.println("Эпики:");
-        for (Epic epic : manager.getAllEpics()) {
-            System.out.println(epic);
+        // опциональный пользовательский сценарий
 
-            for (Subtask subtask : manager.getSubtasksByEpicId(epic.getId())) {
-                System.out.println("--> " + subtask);
-            }
-        }
+        Task task1 = new Task(1, "Задача 1", "Описание задачи 1", Status.NEW);
+        Task task2 = new Task(2, "Задача 2", "Описание задачи 2", Status.NEW);
+        manager.createTask(task1);
+        manager.createTask(task2);
 
-        System.out.println("Подзадачи:");
-        for (Subtask subtask : manager.getAllSubtasks()) {
-            System.out.println(subtask);
-        }
 
-        System.out.println("История просмотров:");
+        Epic epic1 = new Epic(3, "Эпик 1 с подзадачами", "Описание эпика 1", Status.NEW);
+        manager.createEpic(epic1);
+
+        Subtask subtask1 = new Subtask(4, "Подзадача 1", "Описание подзадачи 1", Status.NEW, 3);
+        Subtask subtask2 = new Subtask(5, "Подзадача 2", "Описание подзадачи 2", Status.NEW, 3);
+        manager.createSubtask(subtask1);
+        manager.createSubtask(subtask2);
+
+        Epic epic2 = new Epic(6, "Эпик 2 без подзадач", "Описание эпика 2", Status.NEW);
+        manager.createEpic(epic2);
+        return manager;
+    }
+
+    private static void printHistory(TaskManager manager) {
+        System.out.println("History:");
         for (Task task : manager.getHistory()) {
             System.out.println(task);
         }
+        System.out.println();
     }
 }
