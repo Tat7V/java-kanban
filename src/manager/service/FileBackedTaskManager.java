@@ -30,7 +30,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     public void createSubtask(Subtask subtask) {
         super.createSubtask(subtask);
         save();
-
     }
 
     @Override
@@ -175,19 +174,19 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
 
     private static Task taskFromString(String value) {
-        String[] fields = value.split(",");
-        int id = Integer.parseInt(fields[0]);
-        TaskType type = TaskType.valueOf(fields[1]); // Получаем тип из enum
-        String name = fields[2];
-        Status status = Status.valueOf(fields[3]);
-        String description = fields[4];
+        String[] taskFields = value.split(",");
+        int id = Integer.parseInt(taskFields[0]);
+        TaskType type = TaskType.valueOf(taskFields[1]); // Получаем тип из enum
+        String name = taskFields[2];
+        Status status = Status.valueOf(taskFields[3]);
+        String description = taskFields[4];
 
         if (type == TaskType.TASK) {
             return new Task(id, name, description, status);
         } else if (type == TaskType.EPIC) {
             return new Epic(id, name, description, status);
         } else if (type == TaskType.SUBTASK) {
-            int epicId = Integer.parseInt(fields[5]);
+            int epicId = Integer.parseInt(taskFields[5]);
             return new Subtask(id, name, description, status, epicId);
         }
         throw new IllegalArgumentException("Неизвестный тип задачи");
@@ -215,8 +214,4 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         manager.createEpic(epic1);
         System.out.println(epic1);
     }
-
-
 }
-
-
