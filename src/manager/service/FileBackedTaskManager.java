@@ -10,7 +10,7 @@ import java.nio.file.Files;
 public class FileBackedTaskManager extends InMemoryTaskManager {
     private final File file;
 
-    public FileBackedTaskManager (File file) {
+    public FileBackedTaskManager(File file) {
         this.file = file;
     }
 
@@ -32,6 +32,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         save();
 
     }
+
     @Override
     public void updateTask(Task task) {
         super.updateTask(task);
@@ -146,9 +147,9 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             int maxId = getMaxId(manager);
             manager.idNext = maxId + 1;
 
-            } catch(IOException e){
-                throw new ManagerSaveException("Ошибка загрузки из файла", e);
-            }
+        } catch (IOException e) {
+            throw new ManagerSaveException("Ошибка загрузки из файла", e);
+        }
         return manager;
     }
 
@@ -174,23 +175,23 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
 
     private static Task taskFromString(String value) {
-            String[] fields = value.split(",");
-            int id = Integer.parseInt(fields[0]);
-            TaskType type = TaskType.valueOf(fields[1]); // Получаем тип из enum
-            String name = fields[2];
-            Status status = Status.valueOf(fields[3]);
-            String description = fields[4];
+        String[] fields = value.split(",");
+        int id = Integer.parseInt(fields[0]);
+        TaskType type = TaskType.valueOf(fields[1]); // Получаем тип из enum
+        String name = fields[2];
+        Status status = Status.valueOf(fields[3]);
+        String description = fields[4];
 
-            if (type == TaskType.TASK) {
-                return new Task(id, name, description, status);
-            } else if (type == TaskType.EPIC) {
-                return new Epic(id, name, description, status);
-            } else if (type == TaskType.SUBTASK) {
-                int epicId = Integer.parseInt(fields[5]);
-                return new Subtask(id, name, description, status, epicId);
-            }
-            throw new IllegalArgumentException("Неизвестный тип задачи");
+        if (type == TaskType.TASK) {
+            return new Task(id, name, description, status);
+        } else if (type == TaskType.EPIC) {
+            return new Epic(id, name, description, status);
+        } else if (type == TaskType.SUBTASK) {
+            int epicId = Integer.parseInt(fields[5]);
+            return new Subtask(id, name, description, status, epicId);
         }
+        throw new IllegalArgumentException("Неизвестный тип задачи");
+    }
 
     // Пользовательский сценарий
     public static void main(String[] args) throws Exception {

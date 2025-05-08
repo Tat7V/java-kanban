@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FileBackedTaskManagerTest {
     private File tempFile;
@@ -48,7 +49,7 @@ public class FileBackedTaskManagerTest {
     @Test
     void shouldSaveSeveralTasks() throws IOException {
 
-        Task task = new Task(1,"Задача 1", "Описание задачи 1", Status.NEW);
+        Task task = new Task(1, "Задача 1", "Описание задачи 1", Status.NEW);
         manager.createTask(task);
 
 
@@ -56,7 +57,7 @@ public class FileBackedTaskManagerTest {
         manager.createEpic(epic);
 
 
-        Subtask subtask = new Subtask(3,"Подзадача 1", "Описание подзадачи 1", Status.IN_PROGRESS, 2);
+        Subtask subtask = new Subtask(3, "Подзадача 1", "Описание подзадачи 1", Status.IN_PROGRESS, 2);
         manager.createSubtask(subtask);
 
 
@@ -72,13 +73,13 @@ public class FileBackedTaskManagerTest {
     @Test
     void shouldLoadSeveralTasks() {
 
-        Epic epic = new Epic(1,"Epic", "Epic desc", Status.NEW);
+        Epic epic = new Epic(1, "Epic", "Epic desc", Status.NEW);
         manager.createEpic(epic);
 
-        Task task = new Task(2,"Task", "Task desc", Status.IN_PROGRESS);
+        Task task = new Task(2, "Task", "Task desc", Status.IN_PROGRESS);
         manager.createTask(task);
 
-        Subtask subtask = new Subtask(3,"Subtask", "Sub desc", Status.DONE, 1);
+        Subtask subtask = new Subtask(3, "Subtask", "Sub desc", Status.DONE, 1);
         manager.createSubtask(subtask);
 
         FileBackedTaskManager loadedManager = FileBackedTaskManager.loadFromFile(tempFile);
