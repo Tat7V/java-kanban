@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    private final HashMap<Integer, Task> tasks = new HashMap<>();
-    private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
-    private final HashMap<Integer, Epic> epics = new HashMap<>();
-    private int idNext = 1;
+    final HashMap<Integer, Task> tasks = new HashMap<>();
+    final HashMap<Integer, Subtask> subtasks = new HashMap<>();
+    final HashMap<Integer, Epic> epics = new HashMap<>();
+    int idNext = 1;
     private final HistoryManager historyManager;
 
     public InMemoryTaskManager() {
@@ -185,7 +185,8 @@ public class InMemoryTaskManager implements TaskManager {
 
 
     //Статус эпика
-    private void updateEpicStatus(int epicId) {
+    @Override
+    public void updateEpicStatus(int epicId) {
         Epic epic = epics.get(epicId);
         if (epic != null) {
             ArrayList<Integer> subtaskIds = epic.getSubtaskIds();

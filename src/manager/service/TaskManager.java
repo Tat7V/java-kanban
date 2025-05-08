@@ -43,6 +43,8 @@ public interface TaskManager {
 
     void updateSubtask(Subtask subtask);
 
+    void updateEpicStatus(int id);
+
     //f. Удаление по идентификатору.
     void deleteTaskById(int id);
 
