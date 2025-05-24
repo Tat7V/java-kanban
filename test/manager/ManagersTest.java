@@ -35,7 +35,6 @@ class ManagersTest {
                 foundnextTask = true;
             }
         }
-
         assertTrue(foundtaskWithPredefinedId, "Должна существовать задача с id=1");
         assertTrue(foundnextTask, "Должна существовать задача с id=2");
 
@@ -57,5 +56,4 @@ class ManagersTest {
         HistoryManager historyManager = Managers.getDefaultHistory();
         assertNotNull(historyManager);
     }
-
 }

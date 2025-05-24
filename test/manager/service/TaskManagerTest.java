@@ -80,7 +80,6 @@ public abstract class TaskManagerTest<T extends TaskManager> {
         assertTrue(found, "История должна содержать задачу с исходным id");
     }
 
-
     // Тесты для Epic
     @Test
     void shouldCalculateEpicStatus() {

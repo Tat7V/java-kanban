@@ -24,11 +24,11 @@ public class Task {
     }
 
 
-    public Duration getDuration(){
+    public Duration getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration){
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
@@ -106,6 +106,4 @@ public class Task {
                 ", startTime=" + startTime +
                 '}';
     }
-
-
 }

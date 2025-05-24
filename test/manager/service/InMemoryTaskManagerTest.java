@@ -4,9 +4,7 @@ package manager.service;
 import manager.model.Status;
 import manager.model.Task;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 
 class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
 

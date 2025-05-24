@@ -65,6 +65,4 @@ class InMemoryHistoryManagerTest {
         assertEquals(task.getDescription(), saved.getDescription());
         assertEquals(task.getStatus(), saved.getStatus());
     }
-
-
 }
