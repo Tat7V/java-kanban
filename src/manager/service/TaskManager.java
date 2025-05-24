@@ -4,10 +4,13 @@ import manager.model.Epic;
 import manager.model.Subtask;
 import manager.model.Task;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface TaskManager {
+
+    List<Task> getPrioritizedTasks();
+
     //d. Создание.
     void createTask(Task task);
 
@@ -16,11 +19,11 @@ public interface TaskManager {
     void createSubtask(Subtask subtask);
 
     //a. Получение списка всех задач.
-    ArrayList<Task> getAllTasks();
+    List<Task> getAllTasks();
 
-    ArrayList<Epic> getAllEpics();
+    List<Epic> getAllEpics();
 
-    ArrayList<Subtask> getAllSubtasks();
+    List<Subtask> getAllSubtasks();
 
     //b. Удаление всех задач.
     void deleteAllTasks();
@@ -30,11 +33,11 @@ public interface TaskManager {
     void deleteAllSubtasks();
 
     // c. Получение по идентификатору.
-    Task getTaskById(int id);
+    Optional<Task> getTaskById(int id);
 
-    Epic getEpicById(int id);
+    Optional<Epic> getEpicById(int id);
 
-    Subtask getSubtaskById(int id);
+    Optional<Subtask> getSubtaskById(int id);
 
     //e. Обновление.
     void updateTask(Task task);
@@ -53,7 +56,7 @@ public interface TaskManager {
     void deleteSubtaskById(int id);
 
     //a.a Получение списка всех подзадач определённого эпика.
-    ArrayList<Subtask> getSubtasksByEpicId(int epicId);
+    List<Subtask> getSubtasksByEpicId(int epicId);
 
     List<Task> getHistory();
 

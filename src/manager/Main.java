@@ -37,13 +37,13 @@ public class Main {
         TaskManager manager = Managers.getDefault();
         // опциональный пользовательский сценарий
 
-        manager.createTask(new Task(1, "Задача 1", "Описание задачи 1", Status.NEW));
-        manager.createTask(new Task(2, "Задача 2", "Описание задачи 2", Status.NEW));
+        manager.createTask(new Task(1, "Задача 1", "Описание задачи 1", Status.NEW,null, null));
+        manager.createTask(new Task(2, "Задача 2", "Описание задачи 2", Status.NEW, null, null));
 
         manager.createEpic(new Epic(3, "Эпик 1 с подзадачами", "Описание эпика 1", Status.NEW));
 
-        manager.createSubtask(new Subtask(4, "Подзадача 1", "Описание подзадачи 1", Status.NEW, 3));
-        manager.createSubtask(new Subtask(5, "Подзадача 2", "Описание подзадачи 2", Status.NEW, 3));
+        manager.createSubtask(new Subtask(4, "Подзадача 1", "Описание подзадачи 1", Status.NEW, 3,null, null));
+        manager.createSubtask(new Subtask(5, "Подзадача 2", "Описание подзадачи 2", Status.NEW, 3,null, null));
 
         manager.createEpic(new Epic(6, "Эпик 2 без подзадач", "Описание эпика 2", Status.NEW));
         return manager;
