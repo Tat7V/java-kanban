@@ -89,22 +89,22 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         save();
     }
 
-    void save() {
+    public void save() {
         try {
-            StringBuilder sb = new StringBuilder();
-            sb.append("id,type,name,status,description,epic,startTime,duration,endTime\n");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("id,type,name,status,description,epic,startTime,duration,endTime\n");
 
             for (Task task : getAllTasks()) {
-                sb.append(taskToString(task)).append("\n");
+                stringBuilder.append(taskToString(task)).append("\n");
             }
             for (Epic epic : getAllEpics()) {
-                sb.append(taskToString(epic)).append("\n");
+                stringBuilder.append(taskToString(epic)).append("\n");
             }
             for (Subtask subtask : getAllSubtasks()) {
-                sb.append(taskToString(subtask)).append("\n");
+                stringBuilder.append(taskToString(subtask)).append("\n");
             }
 
-            Files.writeString(file.toPath(), sb.toString());
+            Files.writeString(file.toPath(), stringBuilder.toString());
         } catch (IOException e) {
             throw new ManagerSaveException("Ошибка сохранения в файл");
         }

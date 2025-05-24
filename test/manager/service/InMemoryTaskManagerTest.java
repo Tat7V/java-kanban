@@ -24,8 +24,8 @@ class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
     @Test
     void shouldHandleManyTasks() {
         assertDoesNotThrow(() -> {
-            for (int i = 0; i < 1000; i++) {
-                manager.createTask(new Task(i, "Задача" + i, "Описание задачи" + i, Status.NEW, null, null));
+            for (int tackNumber = 0; tackNumber < 1000; tackNumber++) {
+                manager.createTask(new Task(tackNumber, "Задача" + tackNumber, "Описание задачи" + tackNumber, Status.NEW, null, null));
             }
         }, "Должен обрабатывать большое количество задач");
     }
