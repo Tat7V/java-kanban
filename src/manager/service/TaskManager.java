@@ -3,11 +3,14 @@ package manager.service;
 import manager.model.Epic;
 import manager.model.Subtask;
 import manager.model.Task;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface TaskManager {
+
     List<Task> getPrioritizedTasks();
+
     //d. Создание.
     void createTask(Task task);
 
