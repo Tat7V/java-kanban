@@ -1,11 +1,12 @@
-package manager.service;
+package manager;
 
 import manager.model.Status;
 import manager.model.Task;
+import manager.service.HistoryManager;
+import manager.service.Managers;
+import manager.service.TaskManager;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManagersTest {
@@ -13,14 +14,14 @@ class ManagersTest {
     void shouldNotConflictWithGivenId() {
         TaskManager manager = Managers.getDefault();
 
-        Task taskWithPredefinedId = new Task(1, "Задача с установленным id", "Описание", Status.NEW);
+        Task taskWithPredefinedId = new Task(1, "Задача с установленным id", "Описание", Status.NEW,null,null);
         taskWithPredefinedId.setId(1);
         manager.createTask(taskWithPredefinedId);
 
-        Task nextTask = new Task(2, "Следующая задача со сгенерированным id на 1 больше прошлой", "Описание", Status.NEW);
+        Task nextTask = new Task(2, "Следующая задача со сгенерированным id на 1 больше прошлой", "Описание", Status.NEW,null,null);
         manager.createTask(nextTask);
 
-        ArrayList<Task> allTasks = manager.getAllTasks();
+        List<Task> allTasks = manager.getAllTasks();
         assertEquals(2, allTasks.size(), "Должно быть 2 задачи");
 
         boolean foundtaskWithPredefinedId = false;
