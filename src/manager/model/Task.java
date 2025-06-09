@@ -1,5 +1,7 @@
 package manager.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
