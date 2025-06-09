@@ -38,8 +38,8 @@ public class TasksEndpointTest extends HttpTests{
         assertEquals(200, response.statusCode(), "Статус ответа не 200 (OK)");
 
         Task receivedTask = gson.fromJson(response.body(), Task.class);
-        assertEquals(taskId, receivedTask.getId(), "ID задачи не совпадает");
-        assertEquals("Задача 1", receivedTask.getName(), "Имя задачи не совпадает");
+        assertEquals(taskId, receivedTask.getId(), "Id полученной задачи задачи не совпадает c id созданной");
+        assertEquals("Задача 1", receivedTask.getName(), "Имя полученной задачи не совпадает не совпадает c именем созданной");
     }
 
     @Test
